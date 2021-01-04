@@ -126,37 +126,108 @@ import ReactDOM from 'react-dom';
 //----------------  write handler function as arrow function and no need to bind every function in constructor.
 
 
-class Counter extends Component{
+// class Counter extends Component{
     
-    state={
-        count:0
-    }
+//     state={
+//         count:0
+//     }
 
-    addCounter = () =>{
+//     addCounter = () =>{
+//         return(
+//             this.setState({
+//                 count:this.state.count+1
+//             })
+//         );
+//     }
+    
+//     render(){
+//         return(
+//             <div>
+//                 <Child incrementCounter = {this.addCounter}/>
+//                 Counter:{this.state.count}
+//             </div>
+//         );
+//     }
+// }
+
+// const Child =({incrementCounter})=>{
+//     return(
+//         <button onClick={incrementCounter}>Add Counter</button>
+//     );
+// }
+
+// ReactDOM.render(
+//     <Counter/>,
+//     document.getElementById("root")
+// );
+
+class Home extends Component{
+    state={
+        kitchen:true,
+        bathroom:false,
+        livingRoom:true,
+        bedroom:false
+    }
+    kitchenSwitch=()=>{
         return(
             this.setState({
-                count:this.state.count+1
+                kitchen:!this.state.kitchen
             })
         );
     }
-    
+    bathroomSwitch=()=>{
+        return(
+            this.setState({
+                bathroom:!this.state.bathroom
+            })
+        );
+    }
+    livingroomSwitch=()=>{
+        return(
+            this.setState({
+                livingRoom:!this.state.livingRoom
+            })
+        );
+    }
+    bedroomSwitch=()=>{
+        return(
+            this.setState({
+                bedroom:!this.state.bedroom
+            })
+        );
+    }
     render(){
         return(
             <div>
-                <Child incrementCounter = {this.addCounter}/>
-                Counter:{this.state.count}
+            <table>
+            <tbody>
+                <tr>
+                    <td>Kitchen:{this.state.kitchen?"On":"Off"}</td>
+                </tr>
+                <tr>
+                    <td>Bathroom:{this.state.bathroom?"On":"Off"}</td>
+                </tr>
+                <tr>
+                    <td>Livingroom:{this.state.livingRoom?"On":"Off"}</td>
+                </tr>
+                <tr>
+                    <td>Bedroom:{this.state.bedroom?"On":"Off"}</td>
+                </tr>
+                <tr>
+                    <td><button onClick={this.kitchenSwitch}>Kitchen</button></td>
+                    <td><button onClick={this.bathroomSwitch}>Bathroom</button></td>
+                    <td><button onClick={this.livingroomSwitch}>Livingroom</button></td>
+                    <td><button onClick={this.bedroomSwitch}>bedroom</button></td>
+                </tr>
+            </tbody>
+            </table>    
+
             </div>
         );
     }
 }
 
-const Child =({incrementCounter})=>{
-    return(
-        <button onClick={incrementCounter}>Add Counter</button>
-    );
-}
-
 ReactDOM.render(
-    <Counter/>,
+    <Home/>,
     document.getElementById("root")
 );
